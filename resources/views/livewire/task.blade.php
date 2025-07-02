@@ -8,7 +8,7 @@
         <div class="mt-4 flex flex-row gap-2 items-center">
             <!-- Native input field to replace flux:input -->
             <div class="relative w-full">
-                <input type="text" placeholder="Search orders"
+                <input type="text" placeholder="Add Task"
                     class="w-full border rounded-lg px-3 py-2 text-sm text-zinc-700 dark:text-zinc-300 pr-10"
                     wire:model="task" />
 
@@ -31,9 +31,16 @@
 
             <div class="collapse bg-base-100 border border-base-300 rounded-box" :class="{ 'collapse-open': open }">
                 <div class="collapse-title font-semibold flex items-center flex-wrap gap-2">
-                    <flux:checkbox wire:model="terms" />
 
-                    <span>{{ $t->title }}</span>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="checkbox" wire:click="toggleTerms({{ $t->id }})"
+                            {{ $t->status === 'completed' ? 'checked' : '' }} />
+
+                    </label>
+                    <span
+                        class="text-sm {{ $t->status === 'completed' ? 'line-through text-gray-400' : 'text-black' }}">
+                        {{ $t->title }}
+                    </span>
                     <span class="text-[10px] text-gray-400">{{ $t->created_at->diffForHumans() }}</span>
                     <button @click.stop="open = !open" class="p-1 ml-auto focus:outline-none"
                         style="background: transparent;">
