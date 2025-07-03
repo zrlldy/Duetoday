@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder; 
+use Illuminate\Contracts\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,5 +23,11 @@ class Task extends Model
     {
         return $this->hasMany(Task::class, 'parent_id');
     }
+
+ // Inside Task.php model
+public function scopeSearchTask( Builder $query, $search)
+{
+    return $query->where('title', 'LIKE', "%{$search}%");
+}
 
 }
