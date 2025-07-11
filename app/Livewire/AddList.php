@@ -19,7 +19,7 @@ class AddList extends Component
         // Create a new category
         Categories::create(['name' => $this->newCategory]);
 
-
+        $this->dispatch('taskAdded',$this->newCategory);
         $this->reset('newCategory');
     }   
 
@@ -30,6 +30,8 @@ class AddList extends Component
         if ($category) {
             $category->delete();
         }
+
+        $this->dispatch('taskdeleted', $category->name);
     }
 
     public function render()

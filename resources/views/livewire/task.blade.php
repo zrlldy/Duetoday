@@ -3,6 +3,7 @@
 
    @endphp
 
+
    <div class="mt-4" wire:poll>
 
        <div class="flex flex-row gap-4 items-center mb-6 mt-2">
@@ -28,6 +29,8 @@
 
        <!-- Task List -->
        @forelse ($tasks as $t)
+
+
            <div class="mt-4" x-data="{ open: false, show: false }" x-init="setTimeout(() => show = true, {{ 100 + $loop->index * 100 }})" x-show="show"
                x-transition.opacity.duration.500ms>
 
@@ -50,10 +53,19 @@
         {{ $t->status === 'completed' ? 'line-through text-gray-400' : '' }}
         {{ $dueDate->isPast() && $t->status !== 'completed' ? 'text-red-500' : 'text-black' }}">
                            {{ $t->title }}
+
+
                        </span>
 
                        <span class="text-[10px] text-gray-400">{{ $t->created_at->diffForHumans() }}</span>
 
+                       <flux:button color="red" size="sm" class="border-none bg-none"
+                           wire:click="deleteTask({{ $t->id }})">
+                           <flux:icon.trash variant="micro" />
+                       </flux:button>
+
+
+                       {{-- // delete task --}}
                        <!-- Collapse toggle -->
                        <button @click.stop="open = !open" class="p-1 ml-auto focus:outline-none">
                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"

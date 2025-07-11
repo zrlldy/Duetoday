@@ -20,7 +20,7 @@ class navLink extends Component
     {
      $this->href = $href;
      $this->icon = $icon;
-        $this->active = $active;
+    $this->active = $active;
     }
 
     /**

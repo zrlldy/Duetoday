@@ -24,10 +24,16 @@ class Task extends Model
         return $this->hasMany(Task::class, 'parent_id');
     }
 
- // Inside Task.php model
-public function scopeSearchTask( Builder $query, $search)
+
+public function scopeSearchTask(Builder $query, $search)
 {
-    return $query->where('title', 'LIKE', "%{$search}%");
+    return $query->when($search, function ($q) use ($search) {
+        $q->where(function ($subQuery) use ($search) {
+            $subQuery->where('title', 'LIKE', "%{$search}%")
+                     ->orWhere('description', 'LIKE', "%{$search}%")
+                     ->orWhere('due_date', 'LIKE', "%{$search}%");
+        });
+    });
 }
 
 }

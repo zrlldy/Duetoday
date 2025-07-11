@@ -6,13 +6,15 @@
     <flux:brand href="#" logo="https://fluxui.dev/img/demo/dark-mode-logo.png" name="Acme Inc."
         class="px-2 hidden dark:flex" />
 
-    <flux:input as="button" variant="filled" placeholder="Search..." icon="magnifying-glass" />
+
+
+    @livewire('search-items')
 
     <flux:navlist variant="outline">
         <flux:navlist.group expandable heading="Task" class="hidden lg:grid gap-2">
-            <x-nav-link href="/" icon="inbox">Upcoming </x-nav-link>
-            <x-nav-link href="/task" icon="document-text">Tasks</x-nav-link>
-            <x-nav-link href="/calendar" icon="calendar"> Calendar </x-nav-link>
+            <x-nav-link href="/" icon="inbox" livewire:navigate>Upcoming </x-nav-link>
+            <x-nav-link href="/task" icon="document-text" livewire:navigate>Tasks</x-nav-link>
+            <x-nav-link href="/calendar" icon="calendar" livewire:navigate> Calendar </x-nav-link>
             {{-- <flux:navlist.item icon="inbox" badge="12" href="#">Inbox</flux:navlist.item>
             <flux:navlist.item icon="document-text" href="#">Documents</flux:navlist.item>
             <flux:navlist.ite m icon="calendar" href="#">Calendar</flux:navlist.item> --}}

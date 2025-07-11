@@ -12,7 +12,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="min-h-screen bg-white dark:bg-zinc-800">
+<body class="min-h-screen bg-white dark:bg-zinc-800" wire:poll>
+
 
 
     <x-nav />
@@ -24,10 +25,12 @@
         <flux:heading size="xl" level="1">{{ $greeting }}, Jerold</flux:heading>
 
 
+        @livewire('notification')
         {{ $slot }}
         <flux:separator variant="subtle" />
 
     </flux:main>
+
 
 
 
