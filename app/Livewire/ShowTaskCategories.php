@@ -2,17 +2,23 @@
 
 namespace App\Livewire;
 
+use App\Models\Categories;
 use Livewire\Component;
 
 class ShowTaskCategories extends Component
 {
-    public $task;
-    public function mount($task)
+    public $category;
+    public $tasks = [];
+    public function mount(Categories $categories)
     {
-        $this->task = $task;
+        $this->category = $categories;
+
+        $this->tasks = $this->category->tasks;
     }
     public function render()
     {
-        return view("livewire.show-task-categories");
+        return view("livewire.show-task-categories", [
+            "tasks" => $this->tasks,
+        ]);
     }
 }

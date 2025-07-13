@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get("/task", Task::class);
-Route::get("/task/{task}", ShowTaskCategories::class)->name("task.show");
+Route::get("/categories/{categories}", ShowTaskCategories::class)->name(
+    "task.show"
+);
 Route::get("/", Dashboard::class);
 Route::get("/calendar", Calendar::class);
