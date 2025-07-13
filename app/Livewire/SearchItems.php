@@ -10,7 +10,7 @@ class SearchItems extends Component
 
     public function updatedQuery()
     {
-        
+
         $this->dispatch('updatedQuery', $this->query); // Fire on typing
     }
 

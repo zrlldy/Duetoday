@@ -15,16 +15,20 @@
             <x-nav-link href="/" icon="inbox" livewire:navigate>Upcoming </x-nav-link>
             <x-nav-link href="/task" icon="document-text" livewire:navigate>Tasks</x-nav-link>
             <x-nav-link href="/calendar" icon="calendar" livewire:navigate> Calendar </x-nav-link>
-            {{-- <flux:navlist.item icon="inbox" badge="12" href="#">Inbox</flux:navlist.item>
+            <!-- {{-- <flux:navlist.item icon="inbox" badge="12" href="#">Inbox</flux:navlist.item> -->
             <flux:navlist.item icon="document-text" href="#">Documents</flux:navlist.item>
             <flux:navlist.ite m icon="calendar" href="#">Calendar</flux:navlist.item> --}}
             <flux:menu.separator />
 
         </flux:navlist.group>
         <flux:navlist.group expandable heading="List" class="hidden lg:grid">
+
+            <!--
             {{-- <flux:navlist.item href="#">Marketing site</flux:navlist.item>
             <flux:navlist.item href="#">Android app</flux:navlist.item>
-            <flux:navlist.item href="#">Brand guidelines</flux:navlist.item> --}}
+            <flux:navlist.item href="#">Brand guidelines</flux:navlist.item> --}} -->
+
+
             <livewire:add-list />
 
         </flux:navlist.group>

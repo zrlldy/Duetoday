@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Categories;
-use App\Models\CategoryTask;
 use App\Models\Task;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;

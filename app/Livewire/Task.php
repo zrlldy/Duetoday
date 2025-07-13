@@ -9,28 +9,32 @@ use Livewire\Component;
 class Task extends Component
 {
     public $task;
+
     public $due_date;
+
     public $description = '';
+
     public $selectedCategories = [];
 
-public $searchTerm = '';
+    public $searchTerm = '';
 
     protected $listeners = [
-        'updatedQuery' => 'searchQuery' // Must match dispatch event
+        'updatedQuery' => 'searchQuery', // Must match dispatch event
     ];
 
     public function searchQuery($query)
     {
 
-    // logger("Search received: " . $query);
+        // logger("Search received: " . $query);
         $this->searchTerm = $query;
     }
+
     public function addTask()
     {
         $this->validate([
             'task' => 'required|string|max:255',
         ]);
-             $this->dispatch('taskAdded',$this->task);
+        $this->dispatch('taskAdded', $this->task);
         TaskModel::create(['title' => $this->task]);
 
         $this->reset('task');
@@ -55,13 +59,12 @@ public $searchTerm = '';
         $this->reset(['description', 'due_date']);
     }
 
-
-public function deleteTask($taskid){
-    $FindTask = TaskModel::findOrFail($taskid);
-    $FindTask->delete();
-       $this->dispatch('taskdeleted', $FindTask->title);
-}
-
+    public function deleteTask($taskid)
+    {
+        $FindTask = TaskModel::findOrFail($taskid);
+        $FindTask->delete();
+        $this->dispatch('taskdeleted', $FindTask->title);
+    }
 
     public function toggleTerms($taskId)
     {

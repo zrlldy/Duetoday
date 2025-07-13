@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->foreignIdFor(Categories::class,)->nullable();
+            $table->foreignIdFor(Categories::class)->nullable();
             $table->enum('status', ['pending', 'in_progress', 'completed'])->default('pending');
             $table->timestamp('due_date')->nullable();
             // $table->foreignIdFor(Task::class)->nullable();

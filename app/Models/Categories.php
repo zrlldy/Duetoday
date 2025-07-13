@@ -13,8 +13,7 @@ class Categories extends Model
      */
     public function tasks()
     {
-            return $this->belongsToMany(Task::class, 'category_tasks','categories_id', 'task_id');
+        return $this->belongsToMany(Task::class, 'category_tasks', 'categories_id', 'task_id');
 
     }
-    
 }

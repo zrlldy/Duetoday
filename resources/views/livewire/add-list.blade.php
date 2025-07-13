@@ -3,7 +3,7 @@
         <div class="flex flex-row item-center gap-2 mt-2" class="flex flex-row items-center gap-2 mt-2"
             x-data="{ show: false }" x-init="setTimeout(() => show = true, {{ 100 + $loop->index * 100 }})" x-show="show" x-transition.opacity.duration.500ms>
             <flux:badge size="sm" color="lime">4</flux:badge>
-            <flux:navlist.item href="#">{{ $list->name }}</flux:navlist.item>
+            <flux:navlist.item href="{{route('task.show',['task'=>$list->id])}}">{{ $list->name }}</flux:navlist.item>
             <flux:button as="submit" size="sm" variant="primary" size="sm" color="red"
                 wire:click="deleteCategory({{ $list->id }})">
                 <flux:icon.trash variant="micro" />

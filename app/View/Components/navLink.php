@@ -3,24 +3,25 @@
 namespace App\View\Components;
 
 use Closure;
-use Dotenv\Util\Str;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class navLink extends Component
-{  
-    
+{
     public string $href;
+
     public bool $active = false;
-   public string $icon;
+
+    public string $icon;
+
     /**
      * Create a new component instance.
      */
-    public function __construct( String $href = '',string $icon = '', bool $active = false )
+    public function __construct(string $href = '', string $icon = '', bool $active = false)
     {
-     $this->href = $href;
-     $this->icon = $icon;
-    $this->active = $active;
+        $this->href = $href;
+        $this->icon = $icon;
+        $this->active = $active;
     }
 
     /**

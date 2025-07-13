@@ -1,27 +1,28 @@
 <?php
 
 namespace App\Livewire;
+
 use App\Models\Categories;
 use App\Models\Task;
 use Livewire\Component;
-use Illuminate\Validation\Validator;
+
 class AddList extends Component
 {
+    public $newCategory = '';
 
-         public $newCategory = '';
     public function addCategory()
     {
         // Validate the new category input
         $this->validate([
-        'newCategory' => 'required|string|max:10|min:1|unique:categories,name',
-    ]);
+            'newCategory' => 'required|string|max:10|min:1|unique:categories,name',
+        ]);
 
         // Create a new category
         Categories::create(['name' => $this->newCategory]);
 
-        $this->dispatch('taskAdded',$this->newCategory);
+        $this->dispatch('taskAdded', $this->newCategory);
         $this->reset('newCategory');
-    }   
+    }
 
     public function deleteCategory($categoryId)
     {
@@ -39,6 +40,7 @@ class AddList extends Component
         $task = Task::with('categories')->get(); // Fetch tasks with their categories
 
         $categories = Categories::all();
+
         return view('livewire.add-list', ['categories' => $categories], ['task' => $task]); // now it's $task in Blade
     }
 }
